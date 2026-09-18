@@ -1,4 +1,26 @@
 <!doctype html>
 <title>foo</title>
-<head>bar</head>
+<head></head>
+<link rel="stylesheet" href="styles.css">
+<body>
+  <h1>Rock Paper Scissors!</h1>
+  <div class="buttons">
+    <button class="rock">rock </button>
+  <button class="paper">paper</button>
+  <button class="scissors">scissors</button>
+  </div>
+  <div class="result">
+    The Human picked <span class="human-choice">____</span> and the 
+    Computer picked <span class="computer-choice">____</span>.
+    <div><span class="winner"></span> won the round.</div>
+  </div>
+  <div class="score">
+    <div>Human: <span class="human-score">____</span></div>
+    <div>Computer: <span class="computer-score">____</span></div>
+  </div>
+  <div class="game-over">
+    Game Over! The winner is <span class="game-winner"> </span>
+    <button class="reset-button">Start new game</button>
+  </div>
+</body>
 <script src="script.js"></script>

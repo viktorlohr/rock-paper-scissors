@@ -1,0 +1,12 @@
+.buttons {
+  display: flex;
+  justify-content: left;
+  gap: 24px;
+}
+
+.human-score, .human-choice, .computer-score, .computer-choice {
+  width: 10px;
+  height: 3px;
+  /* border: 1px solid black; */
+  border-radius: 6px;
+}

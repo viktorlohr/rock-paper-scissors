@@ -1,68 +1,77 @@
 const SIGNS = ["rock", "paper", "scissors"];
 
+let gameOverEl = document.querySelector('.game-over');
+gameOverEl.style.display = 'none';
+
 let humanScore = 0;
 let computerScore = 0;
 
-function playGame() {
+const rockBtn = document.querySelector('.rock');
+const paperBtn = document.querySelector('.paper');
+const scissorsBtn = document.querySelector('.scissors');
+const resetBtn = document.querySelector('.reset-button');
 
-  while (humanScore + computerScore < 5) {
-    playRound();
-  }
+rockBtn.addEventListener('click', () => {playGame(SIGNS[0])});
+paperBtn.addEventListener('click', () => {playGame(SIGNS[1])});
+scissorsBtn.addEventListener('click', () => {playGame(SIGNS[2])});
+resetBtn.addEventListener('click', resetGame);
+let roundButtons = [rockBtn, paperBtn, scissorsBtn];
 
-  // cannot happen as its a best of uneven number right now.
-  if (humanScore == computerScore) {
-    console.log("Tie")
-  }
+let humanChoiceEl = document.querySelector('.human-choice');
+let humanScoreEl = document.querySelector('.human-score');
+let computerChoiceEl = document.querySelector('.computer-choice');
+let computerScoreEl = document.querySelector('.computer-score');
+let winnerEl = document.querySelector('.winner');
 
-  let winner;
+let bodyEl = document.querySelector('body');
 
-  if (humanScore > computerScore) {
-    winner = "Human";
-  } else {
-    winner = "Computer";
-  }
 
-  console.log(winner, "wins the game!")
-  resetScore();
+function resetGame() {
+  // TODO
 }
 
-function resetScore() {
-  humanScore = 0;
-  computerScore = 0;
-}
+function playGame(humanChoice) {
 
-function playRound() {
-  let computerChoice = getComputerChoice();
-  let humanChoice = getComputerChoice(); // DEBUG
-  // let humanChoice = getHumanChoice();
+  console.log(`Playing Round. Human chose {humanChoice}`);
   
+  let computerChoice = getComputerChoice();
+  computerChoiceEl.textContent = computerChoice;
   console.log("Computer chose", computerChoice);
+  
+  humanChoiceEl.textContent = humanChoice;
   console.log("Human chose", humanChoice);
 
   let hasWon = hasHumanWon(computerChoice, humanChoice);
 
-  if ( hasWon == null ) {
-    console.log("Tie");
-    return;
-  }
-
   let winner;
   
-  if (hasWon) {
-    winner = "Human";
+  if (hasWon === null) {
+    winner = "Nobody"
+  } else if (hasWon) {
+    winner = "The Human";
     humanScore++;
   } else {
-    winner = "Computer";
+    winner = "The Computer";
     computerScore++;
   }
 
   console.log(winner, "wins this round.");
-  printScore();
-}
-
-function printScore() {
+  winnerEl.textContent = winner;
+  
   console.log("Computer:", computerScore);
+  computerScoreEl.textContent = computerScore;
+
   console.log("Human:", humanScore);
+  humanScoreEl.textContent = humanScore;
+
+  if (humanScore === 5 || computerScore === 5) {
+    roundButtons.map((b) => {b.style.display = 'none'})
+
+
+    
+  }
+
+
 }
 
 function hasHumanWon(computerChoice, humanChoice) {
