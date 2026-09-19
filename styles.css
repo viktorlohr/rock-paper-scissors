@@ -1,8 +1,39 @@
-.buttons {
-  display: flex;
-  justify-content: left;
-  gap: 24px;
+* {
+  box-sizing: border-box;
+  font-family: Verdana, Tahoma, Arial, Helvetica, sans-serif;
 }
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(22, 22, 22);
+  color:rgb(185, 199, 211);
+}
+
+stats {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+.sign-buttons {
+  display: flex;
+  justify-content: space-around;
+  gap: 24px;
+  zoom: 4;
+  padding: 6px 12px;
+  margin: 0px;
+}
+
+button {
+  border: none;
+  border-radius: 4px;
+  box-shadow: 2px 2px 2px black;
+}
+
+
 
 .human-score, .human-choice, .computer-score, .computer-choice {
   width: 10px;

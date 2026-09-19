@@ -4,23 +4,32 @@
 <link rel="stylesheet" href="styles.css">
 <body>
   <h1>Rock Paper Scissors!</h1>
-  <div class="buttons">
-    <button class="rock">rock </button>
-  <button class="paper">paper</button>
-  <button class="scissors">scissors</button>
+  <div class="sign-buttons">
+    <button class="rock">🗿 </button>
+  <button class="paper">📄</button>
+  <button class="scissors">✂️</button>
   </div>
-  <div class="result">
-    The Human picked <span class="human-choice">____</span> and the 
-    Computer picked <span class="computer-choice">____</span>.
-    <div><span class="winner"></span> won the round.</div>
+  <div class="stats">
+    <div class="result">
+    <div>
+      The Human picked <span class="human-choice"></span>
+    </div>
+    <div>
+      The Computer picked <span class="computer-choice"></span>.
+    </div>
+    <div>
+      Round winner: <span class="round-winner"></span>
+    </div>
   </div>
   <div class="score">
-    <div>Human: <span class="human-score">____</span></div>
-    <div>Computer: <span class="computer-score">____</span></div>
+    <div>Human: <span class="human-score"></span></div>
+    <div>Computer: <span class="computer-score"></span></div>
   </div>
   <div class="game-over">
-    Game Over! The winner is <span class="game-winner"> </span>
+    Game Over! <span class="game-winner"> </span> won the game.
     <button class="reset-button">Start new game</button>
   </div>
+  </div>
+  
 </body>
 <script src="script.js"></script>

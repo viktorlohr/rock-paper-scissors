@@ -15,59 +15,75 @@ rockBtn.addEventListener('click', () => {playGame(SIGNS[0])});
 paperBtn.addEventListener('click', () => {playGame(SIGNS[1])});
 scissorsBtn.addEventListener('click', () => {playGame(SIGNS[2])});
 resetBtn.addEventListener('click', resetGame);
-let roundButtons = [rockBtn, paperBtn, scissorsBtn];
+let signBtns = [rockBtn, paperBtn, scissorsBtn];
 
 let humanChoiceEl = document.querySelector('.human-choice');
 let humanScoreEl = document.querySelector('.human-score');
 let computerChoiceEl = document.querySelector('.computer-choice');
 let computerScoreEl = document.querySelector('.computer-score');
-let winnerEl = document.querySelector('.winner');
+let roundWinnerEl = document.querySelector('.round-winner')
+let gameWinnerEl = document.querySelector('.game-winner');
 
 let bodyEl = document.querySelector('body');
 
 
 function resetGame() {
-  // TODO
+  signBtns.map((el) => {el.style.display = 'block'});
+  
+  [humanChoiceEl, humanScoreEl, computerChoiceEl, computerScoreEl, roundWinnerEl, gameWinnerEl].map(
+    (el) => {el.textContent = "_____"}
+  )
+
 }
+
+resetGame()
 
 function playGame(humanChoice) {
 
-  console.log(`Playing Round. Human chose {humanChoice}`);
+  // console.log(`Playing Round. Human chose {humanChoice}`);
   
   let computerChoice = getComputerChoice();
   computerChoiceEl.textContent = computerChoice;
-  console.log("Computer chose", computerChoice);
+  // console.log("Computer chose", computerChoice);
   
   humanChoiceEl.textContent = humanChoice;
-  console.log("Human chose", humanChoice);
+  // console.log("Human chose", humanChoice);
 
   let hasWon = hasHumanWon(computerChoice, humanChoice);
 
-  let winner;
+  let roundWinner;
   
   if (hasWon === null) {
-    winner = "Nobody"
+    roundWinner = "Nobody"
   } else if (hasWon) {
-    winner = "The Human";
+    roundWinner = "The Human";
     humanScore++;
   } else {
-    winner = "The Computer";
+    roundWinner = "The Computer";
     computerScore++;
   }
 
-  console.log(winner, "wins this round.");
-  winnerEl.textContent = winner;
+  // console.log(roundWinner, "wins this round.");
+  roundWinnerEl.textContent = roundWinner;
   
-  console.log("Computer:", computerScore);
+  // console.log("Computer:", computerScore);
   computerScoreEl.textContent = computerScore;
 
-  console.log("Human:", humanScore);
+  // console.log("Human:", humanScore);
   humanScoreEl.textContent = humanScore;
 
   if (humanScore === 5 || computerScore === 5) {
-    roundButtons.map((b) => {b.style.display = 'none'})
+    signBtns.map((b) => {b.style.display = 'none'})
 
-
+    let winner;
+    
+    if (humanScore > computerScore) {
+      winner = "The Human";
+    } else {
+      winner = "The Computer";
+    }
+    gameWinnerEl.textContent = winner;
+    gameOverEl.style.display = 'block';
     
   }
 
@@ -81,7 +97,7 @@ function hasHumanWon(computerChoice, humanChoice) {
   }
   
   result = SIGNS.indexOf(humanChoice) == (SIGNS.indexOf(computerChoice) + 1) % 3
-  console.log(result);
+  // console.log(result);
 
   return result;
   
@@ -90,7 +106,7 @@ function hasHumanWon(computerChoice, humanChoice) {
 
 function getComputerChoice() {
   random = Math.random()*3;
-  console.log(random);
+  // console.log(random);
 
   if (random < 1) {
     return SIGNS[0];
@@ -105,7 +121,7 @@ function getHumanChoice() {
   let choice = prompt("What's your sign?").trim().toLowerCase();
 
   if (!SIGNS.includes(choice)) {
-    console.log("Please enter a valid sign.");
+    // console.log("Please enter a valid sign.");
     getHumanChoice();
   }
 
