@@ -11,9 +11,9 @@ const paperBtn = document.querySelector('.paper');
 const scissorsBtn = document.querySelector('.scissors');
 const resetBtn = document.querySelector('.reset-button');
 
-rockBtn.addEventListener('click', () => {playGame(SIGNS[0])});
-paperBtn.addEventListener('click', () => {playGame(SIGNS[1])});
-scissorsBtn.addEventListener('click', () => {playGame(SIGNS[2])});
+rockBtn.addEventListener('click', () => {playRound(SIGNS[0])});
+paperBtn.addEventListener('click', () => {playRound(SIGNS[1])});
+scissorsBtn.addEventListener('click', () => {playRound(SIGNS[2])});
 resetBtn.addEventListener('click', resetGame);
 let signBtns = [rockBtn, paperBtn, scissorsBtn];
 
@@ -28,25 +28,28 @@ let bodyEl = document.querySelector('body');
 
 
 function resetGame() {
+  humanScore = 0;
+  computerScore = 0;
   signBtns.map((el) => {el.style.display = 'block'});
   
   [humanChoiceEl, humanScoreEl, computerChoiceEl, computerScoreEl, roundWinnerEl, gameWinnerEl].map(
-    (el) => {el.textContent = "_____"}
+    (el) => {el.textContent = ""}
   )
 
+  
 }
 
 resetGame()
 
-function playGame(humanChoice) {
+function playRound(humanChoice) {
 
   // console.log(`Playing Round. Human chose {humanChoice}`);
   
   let computerChoice = getComputerChoice();
-  computerChoiceEl.textContent = computerChoice;
+  computerChoiceEl.textContent = getSignSymbol(computerChoice);
   // console.log("Computer chose", computerChoice);
   
-  humanChoiceEl.textContent = humanChoice;
+  humanChoiceEl.textContent = getSignSymbol(humanChoice);
   // console.log("Human chose", humanChoice);
 
   let hasWon = hasHumanWon(computerChoice, humanChoice);
@@ -56,10 +59,10 @@ function playGame(humanChoice) {
   if (hasWon === null) {
     roundWinner = "Nobody"
   } else if (hasWon) {
-    roundWinner = "The Human";
+    roundWinner = "Human";
     humanScore++;
   } else {
-    roundWinner = "The Computer";
+    roundWinner = "Computer";
     computerScore++;
   }
 
@@ -72,7 +75,7 @@ function playGame(humanChoice) {
   // console.log("Human:", humanScore);
   humanScoreEl.textContent = humanScore;
 
-  if (humanScore === 5 || computerScore === 5) {
+  if (humanScore === 1 || computerScore === 5) {
     signBtns.map((b) => {b.style.display = 'none'})
 
     let winner;
@@ -83,7 +86,7 @@ function playGame(humanChoice) {
       winner = "The Computer";
     }
     gameWinnerEl.textContent = winner;
-    gameOverEl.style.display = 'block';
+    gameOverEl.style.display = 'flex';
     
   }
 
@@ -126,4 +129,17 @@ function getHumanChoice() {
   }
 
   return choice
+}
+
+function getSignSymbol(sign) {
+  switch (sign) {
+    case SIGNS[0]:
+      return "🗿";
+
+    case SIGNS[1]:
+      return "📄";
+
+    case SIGNS[2]:
+      return "✂️";
+  }
 }
