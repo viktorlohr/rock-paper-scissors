@@ -1,11 +1,15 @@
 * {
   box-sizing: border-box;
   font-family: Verdana, Tahoma, Arial, Helvetica, sans-serif;
+  font-size: 110%;
 }
 
+h1 {
+  font-size: 48px;
+}
 h1, h2, h3 {
   margin: 2px;
-  margin-top: 12px;
+  margin-top: 24px;
 }
 
 body {
@@ -13,7 +17,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: rgb(22, 22, 22);
+  background-color: rgb(30, 30, 30);
   color:rgb(185, 199, 211);
   gap: 12px;
 }
@@ -27,7 +31,7 @@ body {
 .sign-buttons {
   display: flex;
   justify-content: space-around;
-  gap: 24px;
+  gap: 30px;
   zoom: 4;
   padding: 6px 12px;
   margin: 0px;
@@ -58,6 +62,14 @@ button {
 }
 
 .reset-button {
-  margin: 6px;
+  margin: 12px;
   font-size: 24px;
+  color:rgb(48, 48, 48);
+  padding: 6px 12px;
+}
+
+.result {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
