@@ -75,7 +75,7 @@ function playRound(humanChoice) {
   // console.log("Human:", humanScore);
   humanScoreEl.textContent = humanScore;
 
-  if (humanScore === 1 || computerScore === 5) {
+  if (humanScore === 5 || computerScore === 5) {
     signBtns.map((b) => {b.style.display = 'none'})
 
     let winner;
