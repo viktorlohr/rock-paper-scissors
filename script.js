@@ -50,7 +50,6 @@ function playRound(humanChoice) {
   // console.log("Computer chose", computerChoice);
   
   humanChoiceEl.textContent = getSignSymbol(humanChoice);
-  // console.log("Human chose", humanChoice);
 
   let hasWon = hasHumanWon(computerChoice, humanChoice);
 
@@ -59,7 +58,7 @@ function playRound(humanChoice) {
   if (hasWon === null) {
     roundWinner = "Nobody"
   } else if (hasWon) {
-    roundWinner = "Human";
+    roundWinner = "You";
     humanScore++;
   } else {
     roundWinner = "Computer";
@@ -72,7 +71,7 @@ function playRound(humanChoice) {
   // console.log("Computer:", computerScore);
   computerScoreEl.textContent = computerScore;
 
-  // console.log("Human:", humanScore);
+
   humanScoreEl.textContent = humanScore;
 
   if (humanScore === 5 || computerScore === 5) {
@@ -81,7 +80,7 @@ function playRound(humanChoice) {
     let winner;
     
     if (humanScore > computerScore) {
-      winner = "The Human";
+      winner = "You";
     } else {
       winner = "The Computer";
     }
